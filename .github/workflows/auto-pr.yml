@@ -2,21 +2,22 @@ name: Create auto pull request with template
 
 on:
   push:
-    branches-ignore: master
+    branches-ignore: main
 
 jobs:
   action-pull-request:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.1
         with:
           fetch-depth: 0
       - name: Run the Action
         uses: devops-infra/action-pull-request@v0.5.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          target_branch: "master"
-          label: Test,bug
-          title: "[RELEASE] Create a new Release"
+          title: Automatic PR
+          target_branch: main
+          label: upstream
           template: .github/PULL_REQUEST_TEMPLATE/TEST_TEMPLATE.md
+          get_diff: true
