@@ -17,6 +17,7 @@ jobs:
         uses: devops-infra/action-pull-request@v0.5.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          target_branch: master
+          target_branch: "master"
           label: Test,bug
+          title: "[RELEASE] Create a new Release"
           template: .github/PULL_REQUEST_TEMPLATE/TEST_TEMPLATE.md
